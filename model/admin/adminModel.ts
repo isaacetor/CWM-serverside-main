@@ -43,3 +43,6 @@ const adminSchema = new Schema<adminDetails>(
   },
   { timestamps: true }
 );
+
+const adminModel = model<admin>("adminModel", adminSchema);
+export default adminModel;

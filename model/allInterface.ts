@@ -3,10 +3,9 @@ export interface clientDetails {
   address: string;
   clientType: string;
   email: string;
-  phoneNumber: string;
+  phoneNumber: number;
   password: string;
   notification: []; //pushing the message model inside
-  role: string;
   message: {}[];
   paymentLog: {}[];
   contact_us: {}[];
@@ -16,7 +15,7 @@ export interface clientDetails {
 export interface adminDetails {
   name: string;
   email: string;
-  isAdmin: boolean;
+
   password: string;
   message: {}[];
   notification: [];
