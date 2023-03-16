@@ -51,6 +51,12 @@ const clientSchema = new Schema<clientDetails>(
         ref: "clientContact",
       },
     ],
+    bills: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Bills",
+      },
+    ],
   },
   { timestamps: true }
 );

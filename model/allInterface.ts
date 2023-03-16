@@ -9,13 +9,12 @@ export interface clientDetails {
   message: {}[];
   paymentLog: {}[];
   contact_us: {}[];
-  //   bills: [];
+  bills: {}[];
 }
 
 export interface adminDetails {
   name: string;
   email: string;
-
   password: string;
   message: {}[];
   notification: [];

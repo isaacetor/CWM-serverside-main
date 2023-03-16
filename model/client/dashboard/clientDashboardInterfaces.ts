@@ -16,7 +16,7 @@ export interface contact_usData {
   detail: string;
 }
 
-export interface clientBills {
+export interface Bill {
   receiverName: string;
   address: string;
   date: string;

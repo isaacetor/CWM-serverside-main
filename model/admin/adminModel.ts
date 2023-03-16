@@ -33,13 +33,13 @@ const adminSchema = new Schema<adminDetails>(
         ref: "adminPaymentLog",
       },
     ],
+    notification: [],
     bills: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "adminBills",
+        ref: "Bills",
       },
     ],
-    notification: [],
   },
   { timestamps: true }
 );

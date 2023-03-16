@@ -10,7 +10,7 @@ export interface adminPayment {
   viewSender: string;
 }
 
-export interface adminBills {
+export interface Bills {
   receiverName: string;
   address: string;
   date: string;
