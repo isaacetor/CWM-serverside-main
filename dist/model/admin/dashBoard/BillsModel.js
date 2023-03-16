@@ -12,8 +12,8 @@ const billsSchema = new mongoose_1.Schema({
         type: String,
     },
     amountIssued: {
-        type: Number
-    }
+        type: Number,
+    },
 });
-const BillsModel = (0, mongoose_1.model)("allBills", billsSchema);
+const BillsModel = (0, mongoose_1.model)("Bills", billsSchema);
 exports.default = BillsModel;

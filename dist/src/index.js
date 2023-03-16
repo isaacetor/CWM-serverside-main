@@ -12,7 +12,7 @@ const app = (0, express_1.default)();
 (0, db_1.default)();
 app.get("/", (req, res) => {
     return res.status(200).json({
-        message: "api is available for consumption",
+        message: "api is available for consumption testing ",
     });
 });
 app.listen(PORT, () => {
