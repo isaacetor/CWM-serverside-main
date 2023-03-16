@@ -1,12 +1,12 @@
 export interface clientDetails {
   name: string;
   address: string;
-  clientType: boolean;
+  clientType: string;
   email: string;
   phoneNumber: string;
   password: string;
   notification: []; //pushing the message model inside
-  location: string;
+  role: string;
   message: {}[];
   paymentLog: {}[];
   contact_us: {}[];
