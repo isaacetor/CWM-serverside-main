@@ -32,9 +32,9 @@ export const sendMessage = async (
       });
 
       await getAdmin?.message?.push(new mongoose.Types.ObjectId(newMsg?._id));
-      getUser?.save();
+      getAdmin?.save();
 
-      await clientModel.findByIdAndUpdate(getAdmin._id, {
+      await clientModel.findByIdAndUpdate(getUser?._id, {
         $push: { notification: newMsg._id },
       });
       return res.status(201).json({
