@@ -16,5 +16,5 @@ const adminAuth = Router();
 adminAuth.post("/adminregister", adminRegistervalidation, registerAdmin);
 adminAuth.get("/:adminId", getOneAdmin);
 adminAuth.get("/", getAllAdmin);
-adminAuth.post("/adminlogin", adminLoginvalidation, adminLogin);
+adminAuth.post("/adminlogin", adminLogin);
 export default adminAuth;

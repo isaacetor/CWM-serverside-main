@@ -74,18 +74,19 @@ export const loginClient = async (
     return res.status(201).json({
       message: "user successfully logged in",
       data: user,
-      token: jwt.sign(
-        { _id: user?._id, email: user?.email, password: user?.password },
-        secret,
-        {
-          expiresIn: "1h",
-        }
-      ),
+      // token: jwt.sign(
+      //   { _id: user?._id, email: user?.email, password: user?.password },
+      //   secret,
+      //   {
+      //     expiresIn: "1h",
+      //   }
+      // ),
     });
-  } catch (error) {
+  } catch (error: any) {
     return res.status(400).json({
       message: " bad request ,unable to login user",
       data: error,
+      err: error.message,
     });
   }
 };

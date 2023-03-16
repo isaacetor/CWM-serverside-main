@@ -75,6 +75,7 @@ export const getAllAdmin = async (req: Request, res: Response) => {
     return res.status(400).json({
       message: "failed to get admin",
       data: error,
+      err: error.message,
     });
   }
 };
@@ -85,7 +86,7 @@ export const adminLogin = asyncHandler(
     res: Response,
     next: NextFunction
   ): Promise<Response> => {
-    const { email } = req.body;
+    const { email, password } = req.body;
     const admin = await adminModel.findOne({ email });
     const secret: Secret = "letsblowbubblesandfightcrimes";
     if (!admin) {
