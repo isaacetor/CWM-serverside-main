@@ -3,7 +3,7 @@ import dbConfig from "../config/db";
 import envVariables from "../config/envVariables";
 import appConfig from "./app";
 
-const PORT = envVariables.PORT;
+const PORT = envVariables.PORT || process.env.PORT;
 
 const app: Application = express();
 appConfig(app);
