@@ -44,9 +44,6 @@ export const getOneAdmin = async (req: Request, res: Response) => {
         path: "message",
       },
       {
-        path: "paymentLog",
-      },
-      {
         path: "bills",
       },
     ]);
@@ -55,9 +52,10 @@ export const getOneAdmin = async (req: Request, res: Response) => {
       message: " populated all data",
       data: admin,
     });
-  } catch (error) {
+  } catch (error: any) {
     return res.status(400).json({
       message: "failed to get admin",
+      data: error.message,
     });
   }
 };
