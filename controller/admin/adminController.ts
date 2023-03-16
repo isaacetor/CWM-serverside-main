@@ -63,8 +63,9 @@ export const getOneAdmin = async (req: Request, res: Response) => {
 //get all admins
 export const getAllAdmin = async (req: Request, res: Response) => {
   try {
+    console.log("confirm");
     const admin = await adminModel.find();
-
+    console.log("confirm");
     return res.status(200).json({
       message: "get all admins",
       data: admin,

@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.registerClient = void 0;
+exports.getOneClient = exports.registerClient = void 0;
 const asyncHandler_1 = require("../../utils/asyncHandler");
 const clientModel_1 = __importDefault(require("../../model/client/clientModel"));
 const AppError_1 = require("../../utils/AppError");
@@ -38,3 +38,26 @@ exports.registerClient = (0, asyncHandler_1.asyncHandler)((req, res, next) => __
         data: client,
     });
 }));
+const getOneClient = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const client = yield clientModel_1.default.findById(req.params.clientId).populate([
+            {
+                path: "message",
+            },
+            {
+                path: "bills",
+            },
+        ]);
+        return res.status(200).json({
+            message: " populated all data",
+            data: client,
+        });
+    }
+    catch (error) {
+        return res.status(400).json({
+            message: "failed to get admin",
+            data: error.message,
+        });
+    }
+});
+exports.getOneClient = getOneClient;

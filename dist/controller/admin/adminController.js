@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.registerAdmin = void 0;
+exports.getAllAdmin = exports.getOneAdmin = exports.registerAdmin = void 0;
 const asyncHandler_1 = require("../../utils/asyncHandler");
 const adminModel_1 = __importDefault(require("../../model/admin/adminModel"));
 const AppError_1 = require("../../utils/AppError");
@@ -35,3 +35,44 @@ exports.registerAdmin = (0, asyncHandler_1.asyncHandler)((req, res, next) => __a
         data: admin,
     });
 }));
+//single get
+const getOneAdmin = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const admin = yield adminModel_1.default.findById(req.params.adminId).populate([
+            {
+                path: "message",
+            },
+            {
+                path: "bills",
+            },
+        ]);
+        return res.status(200).json({
+            message: " populated all data",
+            data: admin,
+        });
+    }
+    catch (error) {
+        return res.status(400).json({
+            message: "failed to get admin",
+            data: error.message,
+        });
+    }
+});
+exports.getOneAdmin = getOneAdmin;
+//get all admins
+const getAllAdmin = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const admin = yield adminModel_1.default.find();
+        return res.status(200).json({
+            message: "get all admins",
+            data: admin,
+        });
+    }
+    catch (error) {
+        return res.status(400).json({
+            message: "failed to get admin",
+            data: error,
+        });
+    }
+});
+exports.getAllAdmin = getAllAdmin;
