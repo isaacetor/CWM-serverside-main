@@ -5,7 +5,7 @@ import adminMessageModel from "../../model/admin/dashBoard/adminMsg";
 import clientModel from "../../model/client/clientModel";
 
 //create or send a message
-export const sendMessage = async (
+export const sendMessageToAdmin = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
