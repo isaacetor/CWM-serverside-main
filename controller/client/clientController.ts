@@ -4,7 +4,7 @@ import { asyncHandler } from "../../utils/asyncHandler";
 import clientModel from "../../model/client/clientModel";
 import { AppError, HttpCode } from "../../utils/AppError";
 
-export const register = asyncHandler(
+export const registerClient = asyncHandler(
   async (
     req: Request,
     res: Response,
