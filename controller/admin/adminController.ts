@@ -3,6 +3,7 @@ import { Request, Response, NextFunction } from "express";
 import { asyncHandler } from "../../utils/asyncHandler";
 import adminModel from "../../model/admin/adminModel";
 import { AppError, HttpCode } from "../../utils/AppError";
+import jwt, { Secret } from "jsonwebtoken";
 
 export const registerAdmin = asyncHandler(
   async (
@@ -77,3 +78,36 @@ export const getAllAdmin = async (req: Request, res: Response) => {
     });
   }
 };
+
+export const adminLogin = asyncHandler(
+  async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<Response> => {
+    const { email } = req.body;
+    const admin = await adminModel.findOne({ email });
+    const secret: Secret = "letsblowbubblesandfightcrimes";
+    if (!admin) {
+      next(
+        new AppError({
+          message: "unable to login admin",
+          httpCode: HttpCode.BAD_REQUEST,
+          name: AppError.name,
+        })
+      );
+    }
+
+    return res.status(HttpCode.OK).json({
+      message: "admin successfully logged in",
+      data: admin,
+      token: jwt.sign(
+        { _id: admin?._id, email: admin?.email, password: admin?.password },
+        secret,
+        {
+          expiresIn: "1h",
+        }
+      ),
+    });
+  }
+);

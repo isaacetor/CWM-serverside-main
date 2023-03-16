@@ -3,7 +3,7 @@ import { Request, Response, NextFunction } from "express";
 import { asyncHandler } from "../../utils/asyncHandler";
 import clientModel from "../../model/client/clientModel";
 import { AppError, HttpCode } from "../../utils/AppError";
-
+import jwt, { Secret } from "jsonwebtoken";
 export const registerClient = asyncHandler(
   async (
     req: Request,
@@ -58,6 +58,34 @@ export const getOneClient = async (req: Request, res: Response) => {
     return res.status(400).json({
       message: "failed to get admin",
       data: error.message,
+    });
+  }
+};
+
+export const loginClient = async (
+  req: Request,
+  res: Response
+): Promise<Response> => {
+  try {
+    const { email, password } = req.body;
+    const user = await clientModel.findOne({ email });
+    const secret: Secret = "letsblowbubblesandfightcrimes";
+
+    return res.status(201).json({
+      message: "user successfully logged in",
+      data: user,
+      token: jwt.sign(
+        { _id: user?._id, email: user?.email, password: user?.password },
+        secret,
+        {
+          expiresIn: "1h",
+        }
+      ),
+    });
+  } catch (error) {
+    return res.status(400).json({
+      message: " bad request ,unable to login user",
+      data: error,
     });
   }
 };
