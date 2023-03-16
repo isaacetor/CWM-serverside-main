@@ -5,6 +5,7 @@ export const clientSchemaValidator = {
     name: Joi.string().required(),
     email: Joi.string().email().trim().lowercase().required(),
     password: Joi.string().min(4).required(),
+    phoneNumber: Joi.number().required(),
   }),
   login: Joi.object({
     email: Joi.string().email().trim().lowercase().required(),
