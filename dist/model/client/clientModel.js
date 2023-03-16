@@ -73,6 +73,12 @@ const clientSchema = new mongoose_1.Schema({
             ref: "clientContact",
         },
     ],
+    bills: [
+        {
+            type: mongoose_1.default.Schema.Types.ObjectId,
+            ref: "Bills",
+        },
+    ],
 }, { timestamps: true });
 const clientModel = (0, mongoose_1.model)("clientModel", clientSchema);
 exports.default = clientModel;

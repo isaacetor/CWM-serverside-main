@@ -34,3 +34,30 @@ export const registerAdmin = asyncHandler(
     });
   }
 );
+
+//single get
+
+export const getOneAdmin = async (req: Request, res: Response) => {
+  try {
+    const admin = await adminModel.findById(req.params.adminId).populate([
+      {
+        path: "message",
+      },
+      {
+        path: "paymentLog",
+      },
+      {
+        path: "bills",
+      },
+    ]);
+
+    return res.status(200).json({
+      message: " populated all data",
+      data: admin,
+    });
+  } catch (error) {
+    return res.status(400).json({
+      message: "failed to get admin",
+    });
+  }
+};
