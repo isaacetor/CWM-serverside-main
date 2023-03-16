@@ -38,3 +38,26 @@ export const registerClient = asyncHandler(
     });
   }
 );
+
+export const getOneClient = async (req: Request, res: Response) => {
+  try {
+    const client = await clientModel.findById(req.params.clientId).populate([
+      {
+        path: "message",
+      },
+      {
+        path: "bills",
+      },
+    ]);
+
+    return res.status(200).json({
+      message: " populated all data",
+      data: client,
+    });
+  } catch (error: any) {
+    return res.status(400).json({
+      message: "failed to get admin",
+      data: error.message,
+    });
+  }
+};
