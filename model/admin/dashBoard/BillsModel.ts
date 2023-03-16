@@ -1,24 +1,24 @@
-import mongoose , {Document , model , Schema} from "mongoose";
+import mongoose, { Document, model, Schema } from "mongoose";
 
 import { Bills } from "./adminDashboardInterfaces";
 
-interface allBills extends Bills , Document{}
+interface allBills extends Bills, Document {}
 
 const billsSchema = new Schema<Bills>({
-    receiverName: {
-    type : String,
-    },
-    address: {
-        type : String,
-    },
-    date: {
-        type : String,
-    },
-    amountIssued: {
-        type :Number
-    }
-})
+  receiverName: {
+    type: String,
+  },
+  address: {
+    type: String,
+  },
+  date: {
+    type: String,
+  },
+  amountIssued: {
+    type: Number,
+  },
+});
 
-const BillsModel = model<allBills>("allBills", billsSchema)
+const BillsModel = model<allBills>("Bills", billsSchema);
 
 export default BillsModel;
