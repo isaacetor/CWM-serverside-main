@@ -6,6 +6,7 @@ import adminAuth from "../router/admin/adminRoutes";
 import clientDashboard from "../router/client/clientDashboardRoutes";
 import adminDashboard from "../router/admin/adminDashboardRoutes";
 import { Request, Response } from "express";
+
 const appConfig = (app: Application) => {
   app.use(express.json()).use(cors());
   //routes
