@@ -11,7 +11,7 @@ const adminMessageSchema = new mongoose.Schema<adminMessage>(
     date: {
       type: String,
     },
-    description: {
+    desc: {
       type: String,
     },
   },

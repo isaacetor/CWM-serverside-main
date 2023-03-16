@@ -3,6 +3,6 @@ import { sendMessage } from "../../controller/admin/adminMsgController";
 
 const adminDashboard = Router();
 
-adminDashboard.post("/clienttoadmin", sendMessage);
+adminDashboard.post("/admintoclient/:adminId/:userId", sendMessage);
 
 export default adminDashboard;

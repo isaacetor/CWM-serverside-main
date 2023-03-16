@@ -1,7 +1,7 @@
 export interface adminMessage {
   sender: string;
   date: string;
-  description: string;
+  desc: string;
 }
 
 export interface adminPayment {

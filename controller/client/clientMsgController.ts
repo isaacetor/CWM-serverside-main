@@ -3,6 +3,7 @@ import { Request, Response } from "express";
 import adminModel from "../../model/admin/adminModel";
 import adminMessageModel from "../../model/admin/dashBoard/adminMsg";
 import clientModel from "../../model/client/clientModel";
+import messageModel from "../../model/client/dashboard/clientMsg";
 
 //create or send a message
 export const sendMessageToAdmin = async (
@@ -24,7 +25,7 @@ export const sendMessageToAdmin = async (
     const getAdmin = await adminModel.findById(req.params.adminId);
 
     if (getUser && getAdmin) {
-      const newMsg = await adminMessageModel.create({
+      const newMsg = await messageModel.create({
         sender: getUser?.name,
         date: getDate,
         desc,
