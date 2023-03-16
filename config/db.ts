@@ -2,7 +2,8 @@ import mongoose from "mongoose";
 import envVariables from "./envVariables";
 
 const DB_URI = envVariables.DB_URI;
-const LIVE_URI = envVariables.LIVE_URI;
+const LIVE_URI =
+  "mongodb+srv://Esther:Esther2004@cluster0.byfqhoj.mongodb.net/?retryWrites=true&w=majority";
 
 const dbConfig = async () => {
   try {

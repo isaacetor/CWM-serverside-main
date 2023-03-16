@@ -1,9 +1,8 @@
 import express, { Application, Request, Response } from "express";
 import dbConfig from "../config/db";
-import envVariables from "../config/envVariables";
 import appConfig from "./app";
 
-const PORT = envVariables.PORT || process.env.PORT;
+const PORT = process.env.PORT || 8000;
 
 const app: Application = express();
 appConfig(app);
