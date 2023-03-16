@@ -57,13 +57,13 @@ const adminSchema = new mongoose_1.Schema({
             ref: "adminPaymentLog",
         },
     ],
+    notification: [],
     bills: [
         {
             type: mongoose_1.default.Schema.Types.ObjectId,
-            ref: "adminBills",
+            ref: "Bills",
         },
     ],
-    notification: [],
 }, { timestamps: true });
 const adminModel = (0, mongoose_1.model)("adminModel", adminSchema);
 exports.default = adminModel;
