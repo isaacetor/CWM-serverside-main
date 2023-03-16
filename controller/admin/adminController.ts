@@ -4,7 +4,7 @@ import { asyncHandler } from "../../utils/asyncHandler";
 import adminModel from "../../model/admin/adminModel";
 import { AppError, HttpCode } from "../../utils/AppError";
 
-export const register = asyncHandler(
+export const registerAdmin = asyncHandler(
   async (
     req: Request,
     res: Response,
@@ -21,7 +21,7 @@ export const register = asyncHandler(
     if (!admin) {
       next(
         new AppError({
-          message: "Failed to create client",
+          message: "Failed to create admin",
           httpCode: HttpCode.BAD_REQUEST,
           name: AppError.name,
         })
@@ -29,7 +29,7 @@ export const register = asyncHandler(
     }
 
     return res.status(201).json({
-      message: "Client created",
+      message: "admin created",
       data: admin,
     });
   }
