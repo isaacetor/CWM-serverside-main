@@ -11,6 +11,11 @@ const PORT = envVariables_1.default.PORT;
 const app = (0, express_1.default)();
 (0, app_1.default)(app);
 (0, db_1.default)();
+app.get("/", (req, res) => {
+    return res.status(200).json({
+        message: "api is available for consumption",
+    });
+});
 app.listen(PORT, () => {
     console.log(`server is up on port ${PORT}`);
 });
