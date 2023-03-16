@@ -10,7 +10,7 @@ dbConfig();
 
 app.get("/", (req: Request, res: Response) => {
   return res.status(200).json({
-    message: "api is available for consumption",
+    message: "api is available for consumption testing ",
   });
 });
 
