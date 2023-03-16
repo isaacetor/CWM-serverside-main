@@ -16,6 +16,11 @@ const appConfig = (app) => {
     app.use("/api/clientauth", clientRoutes_1.default);
     app.use("/api/adminauth", adminRoutes_1.default);
     //dashboard routes
+    app.get("/api/default", (req, res) => {
+        return res.status(200).json({
+            message: "testing my app ",
+        });
+    });
     app.use("/clientdashboard", clientDashboardRoutes_1.default);
     app.use("/admindasboard", adminDashboardRoutes_1.default);
     //error handler : should be the last imported middleware in your application

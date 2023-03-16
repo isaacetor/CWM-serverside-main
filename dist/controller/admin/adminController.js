@@ -62,7 +62,9 @@ exports.getOneAdmin = getOneAdmin;
 //get all admins
 const getAllAdmin = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        console.log("confirm");
         const admin = yield adminModel_1.default.find();
+        console.log("confirm");
         return res.status(200).json({
             message: "get all admins",
             data: admin,
