@@ -6,4 +6,6 @@ const clientValidation_1 = require("../../middleware/validator/client/clientVali
 const clientAuth = (0, express_1.Router)();
 clientAuth.post("/clientregister", clientValidation_1.registerValidation, clientController_1.registerClient);
 clientAuth.get("/:clientId", clientController_1.getOneClient);
+clientAuth.post("/clientlogin", clientValidation_1.loginValidation, clientController_1.loginClient);
+clientAuth.get("/", clientController_1.getAllClients);
 exports.default = clientAuth;
