@@ -90,3 +90,25 @@ export const loginClient = async (
     });
   }
 };
+
+//get all clients
+
+export const getAllClients = async (
+  req: Request,
+  res: Response
+): Promise<Response> => {
+  try {
+    const clients = await clientModel.find();
+
+    return res.status(200).json({
+      message: "all clients gotten successfully",
+      data: clients,
+    });
+  } catch (error: any) {
+    return res.status(400).json({
+      message: " bad request ,unable to login user",
+      data: error,
+      err: error.message,
+    });
+  }
+};

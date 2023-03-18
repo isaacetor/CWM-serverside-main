@@ -1,6 +1,7 @@
 import { Router } from "express";
 
 import {
+  getAllClients,
   getOneClient,
   loginClient,
   registerClient,
@@ -14,5 +15,6 @@ const clientAuth = Router();
 
 clientAuth.post("/clientregister", registerValidation, registerClient);
 clientAuth.get("/:clientId", getOneClient);
-clientAuth.post("/clientlogin", loginClient);
+clientAuth.post("/clientlogin", loginValidation, loginClient);
+clientAuth.get("/", getAllClients);
 export default clientAuth;

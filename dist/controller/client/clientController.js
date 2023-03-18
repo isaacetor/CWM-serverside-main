@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getOneClient = exports.registerClient = void 0;
+exports.getAllClients = exports.loginClient = exports.getOneClient = exports.registerClient = void 0;
 const asyncHandler_1 = require("../../utils/asyncHandler");
 const clientModel_1 = __importDefault(require("../../model/client/clientModel"));
 const AppError_1 = require("../../utils/AppError");
@@ -61,3 +61,47 @@ const getOneClient = (req, res) => __awaiter(void 0, void 0, void 0, function* (
     }
 });
 exports.getOneClient = getOneClient;
+const loginClient = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { email, password } = req.body;
+        const user = yield clientModel_1.default.findOne({ email });
+        const secret = "letsblowbubblesandfightcrimes";
+        return res.status(201).json({
+            message: "user successfully logged in",
+            data: user,
+            // token: jwt.sign(
+            //   { _id: user?._id, email: user?.email, password: user?.password },
+            //   secret,
+            //   {
+            //     expiresIn: "1h",
+            //   }
+            // ),
+        });
+    }
+    catch (error) {
+        return res.status(400).json({
+            message: " bad request ,unable to login user",
+            data: error,
+            err: error.message,
+        });
+    }
+});
+exports.loginClient = loginClient;
+//get all clients
+const getAllClients = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const clients = yield clientModel_1.default.find();
+        return res.status(200).json({
+            message: "all clients gotten successfully",
+            data: clients,
+        });
+    }
+    catch (error) {
+        return res.status(400).json({
+            message: " bad request ,unable to login user",
+            data: error,
+            err: error.message,
+        });
+    }
+});
+exports.getAllClients = getAllClients;
