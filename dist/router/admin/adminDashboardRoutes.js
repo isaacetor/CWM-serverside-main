@@ -7,4 +7,5 @@ const adminDashboard = (0, express_1.Router)();
 adminDashboard.post("/admintoclient/:adminId/:userId", adminMsgController_1.sendMessage);
 //bills
 adminDashboard.post("/bills/:clientId/:adminId", adminBills_1.createBills);
+adminDashboard.get("/alladminmessages", adminMsgController_1.getAllAdminMsg);
 exports.default = adminDashboard;

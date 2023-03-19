@@ -53,3 +53,22 @@ export const sendMessage = async (
     });
   }
 };
+
+export const getAllAdminMsg = async (
+  req: Request,
+  res: Response
+): Promise<Response> => {
+  try {
+    const admin = await adminMessageModel.find();
+
+    return res.status(200).json({
+      message: "message successfully gotten",
+      data: admin,
+    });
+  } catch (error) {
+    return res.status(400).json({
+      message: "bad request , unable to get all message",
+      data: error,
+    });
+  }
+};
