@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.sendMessage = void 0;
+exports.getAllAdminMsg = exports.sendMessage = void 0;
 const mongoose_1 = __importDefault(require("mongoose"));
 const adminModel_1 = __importDefault(require("../../model/admin/adminModel"));
 const adminMsg_1 = __importDefault(require("../../model/admin/dashBoard/adminMsg"));
@@ -58,3 +58,19 @@ const sendMessage = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     }
 });
 exports.sendMessage = sendMessage;
+const getAllAdminMsg = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const admin = yield adminMsg_1.default.find();
+        return res.status(200).json({
+            message: "message successfully gotten",
+            data: admin,
+        });
+    }
+    catch (error) {
+        return res.status(400).json({
+            message: "bad request , unable to get all message",
+            data: error,
+        });
+    }
+});
+exports.getAllAdminMsg = getAllAdminMsg;
