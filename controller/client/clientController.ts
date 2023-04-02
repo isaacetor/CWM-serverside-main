@@ -98,7 +98,7 @@ export const getAllClients = async (
   res: Response
 ): Promise<Response> => {
   try {
-    const clients = await clientModel.find();
+    const clients = await clientModel.find().sort({name:1});
 
     return res.status(200).json({
       message: "all clients gotten successfully",
@@ -118,7 +118,7 @@ export const getAllClients = async (
 
 export const makeQuery = async (req: Request, res: Response): Promise<Response> => {
   try {
-    const search = await clientModel.find(req.query);
+    const search = await clientModel.find(req.query).sort({name:1});
     return res.status(200).json({
       message: "gotten",
       data: search,

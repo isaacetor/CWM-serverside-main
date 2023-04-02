@@ -90,7 +90,7 @@ exports.loginClient = loginClient;
 //get all clients
 const getAllClients = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const clients = yield clientModel_1.default.find();
+        const clients = yield clientModel_1.default.find().sort({ name: 1 });
         return res.status(200).json({
             message: "all clients gotten successfully",
             data: clients,
@@ -108,7 +108,7 @@ exports.getAllClients = getAllClients;
 //make search
 const makeQuery = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const search = yield clientModel_1.default.find(req.query);
+        const search = yield clientModel_1.default.find(req.query).sort({ name: 1 });
         return res.status(200).json({
             message: "gotten",
             data: search,
