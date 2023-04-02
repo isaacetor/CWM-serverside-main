@@ -8,4 +8,5 @@ clientAuth.post("/clientregister", clientValidation_1.registerValidation, client
 clientAuth.get("/:clientId", clientController_1.getOneClient);
 clientAuth.post("/clientlogin", clientValidation_1.loginValidation, clientController_1.loginClient);
 clientAuth.get("/", clientController_1.getAllClients);
+clientAuth.get("/search/users", clientController_1.makeQuery);
 exports.default = clientAuth;

@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getAllClients = exports.loginClient = exports.getOneClient = exports.registerClient = void 0;
+exports.makeQuery = exports.getAllClients = exports.loginClient = exports.getOneClient = exports.registerClient = void 0;
 const asyncHandler_1 = require("../../utils/asyncHandler");
 const clientModel_1 = __importDefault(require("../../model/client/clientModel"));
 const AppError_1 = require("../../utils/AppError");
@@ -105,3 +105,20 @@ const getAllClients = (req, res) => __awaiter(void 0, void 0, void 0, function* 
     }
 });
 exports.getAllClients = getAllClients;
+//make search
+const makeQuery = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const search = yield clientModel_1.default.find(req.query);
+        return res.status(200).json({
+            message: "gotten",
+            data: search,
+        });
+    }
+    catch (error) {
+        return res.status(400).json({
+            message: "an error occurred",
+            data: error,
+        });
+    }
+});
+exports.makeQuery = makeQuery;
