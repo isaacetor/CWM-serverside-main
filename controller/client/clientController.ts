@@ -112,3 +112,21 @@ export const getAllClients = async (
     });
   }
 };
+
+
+//make search
+
+export const makeQuery = async (req: Request, res: Response): Promise<Response> => {
+  try {
+    const search = await clientModel.findOne(req.query);
+    return res.status(200).json({
+      message: "gotten",
+      data: search,
+    });
+  } catch (error) {
+    return res.status(400).json({
+      message: "an error occurred",
+      data: error,
+    });
+  }
+};
