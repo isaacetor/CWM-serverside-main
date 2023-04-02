@@ -4,6 +4,7 @@ import {
   getAllClients,
   getOneClient,
   loginClient,
+  makeQuery,
   registerClient,
 } from "../../controller/client/clientController";
 import {
@@ -17,4 +18,5 @@ clientAuth.post("/clientregister", registerValidation, registerClient);
 clientAuth.get("/:clientId", getOneClient);
 clientAuth.post("/clientlogin", loginValidation, loginClient);
 clientAuth.get("/", getAllClients);
+clientAuth.post("/search/users" , makeQuery)
 export default clientAuth;

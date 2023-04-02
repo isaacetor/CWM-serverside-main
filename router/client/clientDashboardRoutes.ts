@@ -10,4 +10,5 @@ const clientDashboard = Router();
 clientDashboard.post("/clienttoadmin/:userId/:adminId", sendMessageToAdmin);
 clientDashboard.get("/allclientmessages", getAllClientMsg);
 
+
 export default clientDashboard;
