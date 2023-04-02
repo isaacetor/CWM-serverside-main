@@ -18,5 +18,5 @@ clientAuth.post("/clientregister", registerValidation, registerClient);
 clientAuth.get("/:clientId", getOneClient);
 clientAuth.post("/clientlogin", loginValidation, loginClient);
 clientAuth.get("/", getAllClients);
-clientAuth.post("/search/users" , makeQuery)
+clientAuth.get("/search/users" , makeQuery)
 export default clientAuth;

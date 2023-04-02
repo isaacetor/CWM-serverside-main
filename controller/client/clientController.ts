@@ -118,7 +118,7 @@ export const getAllClients = async (
 
 export const makeQuery = async (req: Request, res: Response): Promise<Response> => {
   try {
-    const search = await clientModel.findOne(req.query);
+    const search = await clientModel.find(req.query);
     return res.status(200).json({
       message: "gotten",
       data: search,
